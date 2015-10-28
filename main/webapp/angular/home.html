@@ -1,0 +1,9 @@
+1、取值
+<ul>
+	<li><a ng-href="{{model.accountInfo}}">{{model.accountInfo[0].id}}</a>
+	</li>
+</ul>
+2、循环遍历
+<ul>
+	<li ng-repeat="acc in model.accountInfo">{{acc.id}}</li>
+</ul>
