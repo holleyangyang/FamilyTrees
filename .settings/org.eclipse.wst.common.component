@@ -2,6 +2,9 @@
     <wb-module deploy-name="examForAPI">
         <wb-resource deploy-path="/" source-path="/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="test1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/test1/test1">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="examForAPI"/>
         <property name="java-output-path" value="/examForAPI/main/webapp/WEB-INF/classes"/>
     </wb-module>
