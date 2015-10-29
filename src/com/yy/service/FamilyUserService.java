@@ -1,10 +1,8 @@
 package com.yy.service;
 
-import java.util.List;
-
-import com.yy.entity.FamilyUser;
+import java.util.Map;
 
 public interface FamilyUserService {
-	public String getUserByTreeId(String treeId);
-
+	public String getUserByTreeId(Map map);
+	public int getUserCountByTreeId(Map map);
 }

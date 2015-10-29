@@ -17,13 +17,16 @@
 	 <sql id="treeFuntreeColumn">u.id, u.name, u.url, u.open, u.pId</sql>
 <select id="getAllNode" resultMap="funtreeWithAddress" parameterType="map">
 		select u.id, u.name, u.url, u.open, u.pId
-		from fanmilytree  u	  <where>isshow=1</where> 
+		from familytree  u	  <where>isshow=1</where> 
+		order by id asc
+		
 	</select>
 	
 	<select id="getNodeByParentId" resultMap="funtreeWithAddress" parameterType="String">
 		select u.id, u.name, u.url, u.open, u.pId
-		from fanmilytree  u	 
+		from familytree  u	 
 		<where>pId=#{pId}</where>
+		
 	</select>
 	 
 </mapper>

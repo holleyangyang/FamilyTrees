@@ -3,6 +3,7 @@
 	<name>examForAPI</name>
 	<comment></comment>
 	<projects>
+		<project>test1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
