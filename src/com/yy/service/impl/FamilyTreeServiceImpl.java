@@ -85,7 +85,6 @@ public class FamilyTreeServiceImpl implements FamilyTreeService{
 		FamilyTree fTree=new FamilyTree();
 		fTree.setId(id);
 	 
-		
 		boolean sign=familyTreeDao.updateNode(fTree, sid);
 		
 		return sign;

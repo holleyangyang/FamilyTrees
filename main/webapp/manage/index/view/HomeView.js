@@ -34,13 +34,13 @@ define(
 										beforeClick: function(treeId, treeNode) {
 											var zTree = $.fn.zTree.getZTreeObj("tree");
 											if (treeNode.isParent) {
-												demoIframe.attr("src","../../right/index.jsp?id="+treeNode.id );
+												demoIframe.attr("src","/examForAPI/manage/right/index.jsp?id="+treeNode.id );
 
 												zTree.expandNode(treeNode);
 
 												return false;
 											} else {
-												demoIframe.attr("src","../../manage/right/index.jsp?id="+treeNode.id );
+												demoIframe.attr("src","/examForAPI/manage/right/index.jsp?id="+treeNode.id );
 												return true;
 											}
 										}

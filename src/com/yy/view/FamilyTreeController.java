@@ -66,6 +66,8 @@ private FamilyTreeService familyTreeService;
 		String res = this.familyTreeService.queryFunTree();
 		System.out.println("res----------"+res);
 		try {
+			
+			request.getSession().setAttribute("yangyang", System.currentTimeMillis());
 			response.getWriter().write(res);
 		} catch (IOException e) {
 			e.printStackTrace();

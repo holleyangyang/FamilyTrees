@@ -17,23 +17,15 @@
 			alias="FamilyTree" />
  			<typeAlias type="com.yy.entity.FamilyUser"
 			alias="FamilyUser" />
+			<typeAlias type="com.yy.entity.XtInterface"
+			alias="XtInterface" />
 	</typeAliases>
-	<!--<environments default="MySQL">
-		<environment id="MySQL">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${driver}" />
-				<property name="url" value="${url}" />
-				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />
-			</dataSource>
-		</environment>
-	</environments>
-	-->
+
 	
 	<mappers>
 		<mapper resource="./mybatis_config/FamilyTree.xml"/>
 		<mapper resource="./mybatis_config/FamilyUser.xml"/>
+		<mapper resource="./mybatis_config/XtInterface.xml"/>
 		
 	</mappers>
 </configuration>

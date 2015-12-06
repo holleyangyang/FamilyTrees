@@ -9,7 +9,6 @@ import java.util.List;
 import com.yy.entity.FamilyTree;
 
 import org.mybatis.spring.annotation.Mapper;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
  
 @Service

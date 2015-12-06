@@ -1,15 +1,14 @@
 package com.yy.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FamilyTree {
 	private String id;
 	private String name;
 	private String pId;
 	private String open;
 	private String isshow;
-
+	private String url;
+	public FamilyTree() {
+	}
 	public String getIsshow() {
 		return isshow;
 	}
@@ -17,8 +16,6 @@ public class FamilyTree {
 	public void setIsshow(String isshow) {
 		this.isshow = isshow;
 	}
-
-	private String url;
 
 	public String getId() {
 		return id;
@@ -70,7 +67,6 @@ public class FamilyTree {
 		this.url = url;
 	}
 
-	public FamilyTree() {
-	}
+	
 
 }

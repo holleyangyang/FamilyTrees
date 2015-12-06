@@ -34,14 +34,16 @@ public class FamilyUserController {
 	@RequestMapping(value = "/queryFamilyUserById")
 	public void queryFamilyUserById(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException {
-	 
+			
+		String time=(String) request.getSession().getAttribute("yangyang");
+		System.out.println(time);
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/json;charset=UTF-8");
 			String treeId = request.getParameter("treeId");
             
 			String page = request.getParameter("page");
 			String rows =request.getParameter("rows");
-			System.out.println("rows==="+rows);
+			//System.out.println("rows==="+rows);
 			int currtpage = Integer.valueOf(page);
 			int pageSize =Integer.valueOf(rows);
 			int startPage = (currtpage-1)*pageSize;
@@ -51,10 +53,10 @@ public class FamilyUserController {
 			map.put("treeId", treeId);
 			map.put("startPage", startPage);
 			map.put("endPage", endPage);
-			System.out.println("startPage="+startPage);
-			System.out.println("startPage="+endPage);
+			//System.out.println("startPage="+startPage);
+			//System.out.println("startPage="+endPage);
 			String res = this.familyUserService.getUserByTreeId(map);
-			System.out.println("res----------"+res);
+			//System.out.println("res----------"+res);
 			
 			int count = this.familyUserService.getUserCountByTreeId(map);
 
