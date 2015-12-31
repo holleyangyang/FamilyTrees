@@ -12,13 +12,13 @@
 		<setting name="defaultExecutorType" value="SIMPLE"/>  
 		<setting name="defaultStatementTimeout" value="25000"/>  
 	</settings>
-	<typeAliases>
+	<!--<typeAliases>
 			<typeAlias type="com.yy.entity.FamilyTree"
 			alias="FamilyTree" />
  			<typeAlias type="com.yy.entity.FamilyUser"
 			alias="FamilyUser" />
 	</typeAliases>
-	<!--<environments default="MySQL">
+	<environments default="MySQL">
 		<environment id="MySQL">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
@@ -30,10 +30,9 @@
 		</environment>
 	</environments>
 	-->
-	
+ 
 	<mappers>
-		<mapper resource="./mybatis_config/FamilyTree.xml"/>
-		<mapper resource="./mybatis_config/FamilyUser.xml"/>
-		
+		<mapper resource="./com/function/buzhou/dao/impl/Buzhou.xml"/>
 	</mappers>
+ 
 </configuration>

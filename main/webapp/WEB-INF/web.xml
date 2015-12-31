@@ -18,10 +18,13 @@
 		<servlet-name>springMVC</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-  <listener>
+  <!-- <listener>
 		<listener-class>com.yy.util.ApplicationDataBaseInit</listener-class>
 	</listener>
+   -->
   <filter>  
+  
+  
         <filter-name>CharacterEncodingFilter</filter-name>  
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
         <init-param>  
