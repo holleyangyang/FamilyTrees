@@ -34,13 +34,13 @@ define(
 										beforeClick: function(treeId, treeNode) {
 											var zTree = $.fn.zTree.getZTreeObj("tree");
 											if (treeNode.isParent) {
-												demoIframe.attr("src",base.webContextName+"/manage/right/index.jsp?id="+treeNode.id );
+												demoIframe.attr("src","/examForAPI/manage/right/index.jsp?id="+treeNode.id );
 
 												zTree.expandNode(treeNode);
 
 												return false;
 											} else {
-												demoIframe.attr("src",base.webContextName+"/manage/right/index.jsp?id="+treeNode.id );
+												demoIframe.attr("src","/examForAPI/manage/right/index.jsp?id="+treeNode.id );
 												return true;
 											}
 										}
@@ -61,7 +61,7 @@ define(
 							var self = this;
 							$.ajax({    
 							    type:'post',        
-							    url:'/examForAPI/FamilyTree/queryFunTree.do',    
+							    url:'../../FamilyTree/queryFunTree.do',    
 							    data:{},    
 							    cache:false,
 							    async:false,

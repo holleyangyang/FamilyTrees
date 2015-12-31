@@ -18,13 +18,12 @@
     <thead> 
         <tr>  
            		<th data-options="field:'id',width:80,hidden:true" > ID</th>
-				<th data-options="field:'name',width:100">姓名</th>
-				<th data-options="field:'sex',width:80,align:'center'">性别</th>
-				<th data-options="field:'speciality',width:80,align:'center'">职业</th>
-				<th data-options="field:'speciality',width:80,align:'center'">特长</th>
-				<th data-options="field:'contactnumber',width:100,align:'center'">联系电话</th>
-				<th data-options="field:'workunit',width:80,align:'center'">工作单位</th>
-				<th data-options="field:'treeName',width:80,align:'center'">关系</th>
+				<th data-options="field:'xtname',width:100">系统名称</th>
+				<th data-options="field:'functionname',width:80,align:'center'">功能</th>
+				<th data-options="field:'facetype',width:80,align:'center'">接口类型</th>
+				<th data-options="field:'facename',width:80,align:'center'">接口名称</th>
+ 				<th data-options="field:'disabled',width:80,align:'center'">是否在用</th>
+				<th data-options="field:'remark',width:80,align:'center'">备注</th>
         </tr> 
     </thead> 
 </table>  
@@ -131,7 +130,7 @@ $(function(){
         border: true, 
         collapsible:false,//是否可折叠的 
         fit: true,//自动大小 
-        url:'../../FamilyUser/queryFamilyUserById.do?treeId=<%=request.getParameter("id") %>', 
+        url:'/examForAPI/XtInterface/queryList.do?treeId=<%=request.getParameter("id") %>', 
         //sortName: 'code', 
         //sortOrder: 'desc', 
         remoteSort:false,  

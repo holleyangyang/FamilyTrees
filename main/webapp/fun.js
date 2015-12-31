@@ -54,7 +54,7 @@ var zTree;
 	temp.getFuntData=function (){
 			$.ajax({    
 			    type:'post',        
-			    url:'/examForAPI/FamilyTree/queryFunTree.do',    
+			    url:'FamilyTree/queryFunTree.do',    
 			    data:{},    
 			    cache:false,
 			    async:false,
