@@ -4,7 +4,9 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -170,4 +172,37 @@ public class ExtHelper {
         }     
        return json.toString();     
     }  
+   public static String transMapToString(Map map){  
+	   java.util.Map.Entry entry;  
+	   StringBuffer sb = new StringBuffer();  
+	   sb.append("{");
+	   for(Iterator iterator = map.entrySet().iterator(); iterator.hasNext();)  
+	   {  
+	     entry = (java.util.Map.Entry)iterator.next();  
+	       sb.append("\"");
+	       sb.append(entry.getKey().toString()).append( "\":" );
+	       String val=null==entry.getValue()?"": entry.getValue().toString();
+	       sb.append("\"");
+	       sb.append(val);
+	       sb.append("\"");
+	       sb.append (iterator.hasNext() ? "," : "");  
+	   }  
+	   sb.append("}");
+	   return sb.toString();  
+	 }  
+   public static String transListToString(List<Map> list){  
+	   StringBuffer sb = new StringBuffer();  
+	   sb.append("[");
+	    int i=0;
+	    int length=list.size();
+	   for(Map map :list){
+		   i++;
+		   sb.append(transMapToString(map));
+		    if(length!=i){
+		    	sb.append(",");
+		    }
+	   }
+	   sb.append("]");
+	   return sb.toString();
+   }
 }

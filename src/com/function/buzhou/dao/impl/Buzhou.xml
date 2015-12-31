@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.function.buzhou.dao.BuZhouDao">
+	 
+	 <resultMap type="map" id="funtreeWithAddress">
+			<result property="id" column="id"/>
+			<result property="name" column="name"/>
+			<result property="remark" column="remark"/>
+	</resultMap>
+	<select id="getList" resultMap="funtreeWithAddress" parameterType="map">
+		select u.id, u.name, u.remark
+		from SYS_BUZHOU  u	 
+		<where>
+		    function_id=#functionId#
+		</where>
+	</select>
+	 
+</mapper>
