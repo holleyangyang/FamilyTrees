@@ -1,4 +1,4 @@
-package com.function.buzhou.view;
+package com.function.sysfunction.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,31 +14,28 @@ import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.common.util.JsonUtil;
 import com.function.buzhou.service.impl.BuzhouServiceImpl;
+import com.function.sysfunction.service.impl.SysFunctionServiceImpl;
 import com.yy.util.ExtHelper;
 
 @Controller
-public class BuZhouController {
+public class SysFunctionController {
 	
 	@Autowired
-	BuzhouServiceImpl buzhou;
+	SysFunctionServiceImpl sysFunction;
 	
-	@RequestMapping(value = "/buzhou/list/{functionId}",method=RequestMethod.POST)
-	public void test1(@PathVariable("functionId") String functionId,HttpServletRequest request,
+	@RequestMapping(value = "/sysfunction/list")
+	public void test1(HttpServletRequest request,
 			HttpServletResponse response){
 	 
 			Map<String,String> map= new HashMap();
-			map.put("functionId", functionId);
+			//map.put("functionId", "101");
 			
-			String str=buzhou.getList(map);
+			String str=sysFunction.getList(map);
 			JsonUtil.printJsonListString(request,response,str);
-		 
-	 
    }
 	
 	public void finalize() throws Throwable{

@@ -123,7 +123,7 @@ $(function(){
         border: true, 
         collapsible:false,//是否可折叠的 
         fit: true,//自动大小 
-        url:'/examForAPI/buzhou/list.do?random=Math.random()&treeId=<%=request.getParameter("id") %>', 
+        url:'/examForAPI/buzhou/list/<%=request.getParameter("id") %>', 
         //sortName: 'code', 
         //sortOrder: 'desc', 
         remoteSort:false,  

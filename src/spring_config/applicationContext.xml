@@ -23,7 +23,6 @@
 			<value>${jdbc.driverClassName}</value>
 		</property>
 		<property name="url">
-			<!-- value>jdbc:mysql://localhost:3306/</value -->
 			<value>${jdbc.url}</value>
 		</property>
 		<property name="username">
@@ -45,7 +44,7 @@
 	
 	<bean class="org.mybatis.spring.annotation.MapperScannerPostProcessor">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.function.buzhou.dao" />
+		<property name="basePackage" value="com.function.buzhou.dao,com.function.sysfunction.dao" />
 	</bean>
 	
 	<!-- ================================= 事务控制相关 start ============================================= -->
