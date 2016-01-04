@@ -15,19 +15,20 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	<import resource="applicationContext.xml"/>
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+ 
     <!-- 自动扫描的包名 -->
-    <context:component-scan base-package="com.function" >
-    </context:component-scan>
+    <context:component-scan base-package="com.function" />
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
-    <context:annotation-config />
+   <context:annotation-config />
     <!-- 视图解释类 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/WEB-INF/jsp/"/>
     	<!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  -->
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     </bean>
-    <!-- 拦截器1 mvc:interceptors>
+    <!-- 拦截器1 
+	 mvc:interceptors>
 	 	<bean class="com.interceptors.MyInterceptors"></bean>
 	 </mvc:interceptors
 	  -->
@@ -42,13 +43,6 @@
 	 -->
 	<!-- 错误总处理 -->
  	<!-- 对静态资源文件的访问  方案一 （二选一） -->
-  <mvc:default-servlet-handler/>
+ 	<mvc:default-servlet-handler/>
   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
-   <bean id="propertyHolder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-         <property name="locations">  
-            <list>  
-                <value>classpath*:sys.properties</value>  
-             </list>  
-        </property>  
-    </bean>     
 </beans> 
