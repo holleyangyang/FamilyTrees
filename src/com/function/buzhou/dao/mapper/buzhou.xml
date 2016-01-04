@@ -4,17 +4,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.function.buzhou.dao.BuZhouDao">
 	 
-	 <resultMap type="map" id="funtreeWithAddress">
+	 <resultMap type="map" id="buzhou">
 			<result property="id" column="id"/>
 			<result property="name" column="name"/>
 			<result property="remark" column="remark"/>
 	</resultMap>
-	<select id="getList" resultMap="funtreeWithAddress" parameterType="map">
+	<select id="getList" resultMap="buzhou" parameterType="map">
 		select u.id, u.name, u.remark
-		from SYS_BUZHOU  u	 
-		<where>
-		    function_id=#functionId#
-		</where>
+		from SYS_BUZHOU  u
+		<where>	 
+		 <if test="functionId!=''">
+		 	function_id=${functionId}
+		 </if>
+		 </where>
 	</select>
 	 
 </mapper>

@@ -59,20 +59,20 @@ define(
 						render : function() {
 							//1、
 							var self = this;
-//							$.ajax({    
-//							    type:'post',        
-//							    url:'/examForAPI/FamilyTree/queryFunTree.do',    
-//							    data:{},    
-//							    cache:false,
-//							    async:false,
-//							   // dataType:'json',    
-//							    success:function(data){   
-//							    	self.funTreeModel=data;
-//							    },
-//							    error:function(data){
-//							    	alert("系统异常了");
-//							    }   
-//							});
+							$.ajax({    
+							    type:'post',        
+							    url:'/examForAPI/sysfunction/list.do',    
+							    data:{},    
+							    cache:false,
+							    async:false,
+							   // dataType:'json',    
+							    success:function(data){   
+							    	self.funTreeModel=data;
+							    },
+							    error:function(data){
+							    	alert("系统异常了");
+							    }   
+							});
 							//2、
 							self.$el.html(self._template({
 								//accountInfo : oldAccountInfoModel,
@@ -83,16 +83,16 @@ define(
 							//4、
 							
 							
-							self.funTreeModel =[
-							     		{id:1, pId:0, name:"信用卡王银", open:true},
-							     		{id:101, pId:1, name:"首页", file:""},
-							     		{id:101101, pId:101, name:"账单地址", file:base.webContextName+"/function/right/index.jsp"},
-							     		{id:101102, pId:101, name:"统计图标", file:base.webContextName+"/function/right/index.jsp"} 
-							     	];
+//							self.funTreeModel =[
+//							     		{id:1, pId:0, name:"信用卡王银", open:true},
+//							     		{id:101, pId:1, name:"首页", file:""},
+//							     		{id:101101, pId:101, name:"账单地址", file:base.webContextName+"/function/right/index.jsp"},
+//							     		{id:101102, pId:101, name:"统计图标", file:base.webContextName+"/function/right/index.jsp"} 
+//							     	];
 							
 							var t = $("#tree");
-						    //t = $.fn.zTree.init(t, self.setting, JSON.parse(self.funTreeModel));
-							t = $.fn.zTree.init(t, self.setting, self.funTreeModel);
+						    t = $.fn.zTree.init(t, self.setting, JSON.parse(self.funTreeModel));
+//							t = $.fn.zTree.init(t, self.setting, self.funTreeModel);
 						    demoIframe = $("#testIframe");
 						  	demoIframe.bind("load", self.loadReady);
 						  	var zTree = $.fn.zTree.getZTreeObj("tree");

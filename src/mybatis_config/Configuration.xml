@@ -13,6 +13,7 @@
 		<setting name="defaultStatementTimeout" value="25000"/>  
 	</settings>
 	<mappers>
-		<mapper resource="./com/function/buzhou/dao/impl/Buzhou.xml"/>
+		<mapper resource="./com/function/buzhou/dao/mapper/buzhou.xml"/>
+		<mapper resource="./com/function/sysfunction/dao/maaper/sysfunction.xml"/>
 	</mappers>
 </configuration>
