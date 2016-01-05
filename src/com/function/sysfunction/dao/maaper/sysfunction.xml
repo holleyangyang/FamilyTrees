@@ -13,7 +13,7 @@
 	</resultMap>
 	<select id="getList" resultMap="sysfunction" parameterType="map">
 		select function_id,
-       function_name,
+       function_id||'-'||function_name function_name,
        function_desc,
        parent_id,
        parent_name,
@@ -29,6 +29,8 @@
 		 	function_id=${functionId}
 		 </if>
 		 </where>
+		 
+		 order by function_id
 	</select>
 	 
 </mapper>
