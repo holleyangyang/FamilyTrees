@@ -18,5 +18,16 @@
 		 </if>
 		 </where>
 	</select>
-	 
+	
+	<insert id="add" parameterType="map">
+	 insert into SYS_BUZHOU (id,name,remark,function_id) 
+	 values(${id},'${name}','${remark}','${functionId}')
+	</insert>
+	
+	 <delete id="delete" parameterType="map">
+	 	delete from SYS_BUZHOU where  id=${id} and function_id =${functionId}
+	 </delete>
+	  <select id="getMaxIdByFunctionId" resultType="String"  parameterType="map">
+	 	select max(id)  from SYS_BUZHOU where   function_id =${functionId}
+	 </select>
 </mapper>

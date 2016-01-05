@@ -44,18 +44,37 @@ public class BuZhouController {
 			map.put("functionId", functionId);
 
 			String str=buzhou.getList(map);
+			
+			logger.info("str:"+str);
 			JsonUtil.printJsonListString(request,response,str);
    }
 	
 	@RequestMapping(value = "/buzhou/add/{functionId}",method=RequestMethod.POST)
-	public void add(HttpServletRequest request,
+	public void add(@PathVariable("functionId") String functionId,HttpServletRequest request,
 			HttpServletResponse response){
-		String step=request.getParameter("step");
-		String name=request.getParameter("name");
+ 		String name=request.getParameter("name");
 		String remark=request.getParameter("remark");
 		
-		logger.info("name:"+name+";remark:"+remark);
+		
+		Map<String,String> map= new HashMap();
+		map.put("functionId", functionId);
+		int functionIdCount=buzhou.getCountByFunctionId(map);
+		
+		map.put("id",new Integer(functionIdCount+1).toString());
+		map.put("name", name);
+		map.put("remark", remark);
+	
+		buzhou.add(map);
+		
 		
 	}
-	
+	@RequestMapping(value = "/buzhou/delete/{functionId}/{id}",method=RequestMethod.DELETE)
+	public void delete(@PathVariable("functionId") String functionId,@PathVariable("id") String id,HttpServletRequest request,
+			HttpServletResponse response){
+			Map<String,String> map= new HashMap();
+			map.put("functionId", functionId);
+			map.put("id", id);
+		    buzhou.delete(map);
+		
+   }
 }

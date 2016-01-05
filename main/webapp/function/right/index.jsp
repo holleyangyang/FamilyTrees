@@ -30,7 +30,21 @@
 					iconCls:'icon-ok',
 					handler:function(){
 						
-						$('#frm1').submit();
+						$.ajax({
+				                cache: true,
+				                type: 'POST',
+				                url:'/examForAPI/buzhou/add/<%=request.getParameter("id") %>',
+				                data:$('#frm1').serialize(),// 你的formid
+				                async: false,
+				                error: function(request) {
+				                    alert('Connection error');
+				                },
+				                success: function(data) {
+				                   $('#dlg').dialog('close');
+				                    $('#list_data').datagrid('reload');
+				                }
+				            });
+						
 					}
 				},{
 					text:'Cancel',
@@ -39,11 +53,7 @@
 					}
 				}],resizable:true,modal:true
 			">
-		<form action="/examForAPI/buzhou/add/<%=request.getParameter("id") %>" method="post" id="frm1">
-		<div style="margin-bottom:20px">
-			<div>step:</div>
-			<input class="easyui-textbox" name="step" data-options="prompt:'Enter a step...'" style="width:100%;height:22px">
-		</div>
+		<form  method="post" id="frm1">
 		<div style="margin-bottom:20px">
 			<div>Name:</div>
 			<input class="easyui-textbox" name="name" data-options="prompt:'Enter a name...'" style="width:100%;height:22px">
@@ -99,8 +109,30 @@ $(function(){
         }, '-',{ 
             text: '删除', 
             iconCls: 'icon-remove', 
-            handler: function(){ 
-                delAppInfo(); 
+            handler: function(){
+            	var id="";
+            	var row = $('#list_data').datagrid('getSelected');
+            	if (row){
+            		id=row.id;
+            	}else{
+            		alert("请选择一行");
+            	}
+            	
+            	$.ajax({
+                    cache: true,
+                    type: "DELETE",
+                    url:'/examForAPI/buzhou/delete/<%=request.getParameter("id") %>/'+id,
+                    data:{},// 你的formid
+                    async: false,
+                    error: function(request) {
+                        alert("Connection error");
+                    },
+                    success: function(data) {
+                       alert("DELETE SUCCESS");
+                       $('#list_data').datagrid('reload');
+                    }
+                });
+            	
             } 
         }], 
     });  
