@@ -48,7 +48,12 @@ public class BuZhouController {
 			logger.info("str:"+str);
 			JsonUtil.printJsonListString(request,response,str);
    }
-	
+	/**
+	 * 添加步骤信息
+	 * @param functionId
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value = "/buzhou/add/{functionId}",method=RequestMethod.POST)
 	public void add(@PathVariable("functionId") String functionId,HttpServletRequest request,
 			HttpServletResponse response){
@@ -65,9 +70,14 @@ public class BuZhouController {
 		map.put("remark", remark);
 	
 		buzhou.add(map);
-		
-		
 	}
+	/**
+	 * 删除步骤信息
+	 * @param functionId
+	 * @param id
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value = "/buzhou/delete/{functionId}/{id}",method=RequestMethod.DELETE)
 	public void delete(@PathVariable("functionId") String functionId,@PathVariable("id") String id,HttpServletRequest request,
 			HttpServletResponse response){
@@ -75,6 +85,5 @@ public class BuZhouController {
 			map.put("functionId", functionId);
 			map.put("id", id);
 		    buzhou.delete(map);
-		
    }
 }
