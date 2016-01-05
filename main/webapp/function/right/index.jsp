@@ -21,17 +21,16 @@
     </thead> 
 </table>  
 	
-	
 <!-- 修改页面 -->
-	<div id="dlg" class="easyui-dialog panel-body panel-body-noborder window-body" title="家族成员信息编辑" style="width:400px;height:400px;padding:10px; "
+	<div id="dlg" class="easyui-dialog panel-body panel-body-noborder window-body" title="步骤信息编辑" style="width:500px;height:500px;padding:10px; "
 			data-options="
 				iconCls: 'icon-save',
-				
 				buttons: [{
 					text:'Ok',
 					iconCls:'icon-ok',
 					handler:function(){
-						alert('ok');
+						
+						$('#frm1').submit();
 					}
 				},{
 					text:'Cancel',
@@ -40,71 +39,23 @@
 					}
 				}],resizable:true,modal:true
 			">
-		
+		<form action="/examForAPI/buzhou/add/<%=request.getParameter("id") %>" method="post" id="frm1">
+		<div style="margin-bottom:20px">
+			<div>step:</div>
+			<input class="easyui-textbox" name="step" data-options="prompt:'Enter a step...'" style="width:100%;height:22px">
+		</div>
 		<div style="margin-bottom:20px">
 			<div>Name:</div>
-			<input class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email'" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div> sex:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>treeid:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
+			<input class="easyui-textbox" name="name" data-options="prompt:'Enter a name...'" style="width:100%;height:22px">
 		</div>
 		<div style="margin-bottom:20px">
 			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
+			<textarea id="" rows="14" name="remark" data-options="prompt:'Enter a remark...'"  class="textarea easyui-validatebox" style="width:100%;"></textarea> 
 		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<input class="easyui-textbox" style="width:100%;height:22px">
-		</div>
+		
+		 </form>
+		 </div>
+		 
 	
 </body>
 </html>
