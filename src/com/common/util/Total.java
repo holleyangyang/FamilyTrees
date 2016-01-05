@@ -1,4 +1,4 @@
-package com.yy.util;
+package com.common.util;
 
 public class Total {
 	private long results;

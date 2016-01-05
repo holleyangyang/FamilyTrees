@@ -1,4 +1,4 @@
-package com.yy.util;
+package com.common.util;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
