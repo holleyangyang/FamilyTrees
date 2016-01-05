@@ -6,9 +6,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.annotation.Mapper;
-import org.springframework.stereotype.Repository;
 @Resource
 @Mapper
 public interface SysFunctionDao {
-  public List getList(Map<String,String> map);
+  public List<Map<String,String>> getList(Map<String,String> map);
 }

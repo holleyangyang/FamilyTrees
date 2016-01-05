@@ -1,10 +1,6 @@
 package com.function.buzhou.view;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+
+
 
 
 
@@ -40,7 +39,7 @@ public class BuZhouController {
 	@RequestMapping(value = "/buzhou/list/{functionId}",method=RequestMethod.POST)
 	public void list(@PathVariable("functionId") String functionId,HttpServletRequest request,
 			HttpServletResponse response){
-			Map<String,String> map= new HashMap();
+			Map<String,String> map= new HashMap<String, String>();
 			map.put("functionId", functionId);
 
 			String str=buzhou.getList(map);
@@ -61,7 +60,7 @@ public class BuZhouController {
 		String remark=request.getParameter("remark");
 		
 		
-		Map<String,String> map= new HashMap();
+		Map<String,String> map= new HashMap<String, String>();
 		map.put("functionId", functionId);
 		int functionIdCount=buzhou.getCountByFunctionId(map);
 		
@@ -81,7 +80,7 @@ public class BuZhouController {
 	@RequestMapping(value = "/buzhou/delete/{functionId}/{id}",method=RequestMethod.DELETE)
 	public void delete(@PathVariable("functionId") String functionId,@PathVariable("id") String id,HttpServletRequest request,
 			HttpServletResponse response){
-			Map<String,String> map= new HashMap();
+			Map<String,String> map= new HashMap<String, String>();
 			map.put("functionId", functionId);
 			map.put("id", id);
 		    buzhou.delete(map);

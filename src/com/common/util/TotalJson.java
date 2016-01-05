@@ -4,12 +4,12 @@ import java.util.List;
 
 public class TotalJson {
 	private long results;
-	private List items;
-	public List getItems() {
+	private List<?> items;
+	public List<?> getItems() {
 		return items;
 	}
 
-	public void setItems(List items) {
+	public void setItems(List<?> items) {
 		this.items = items;
 	}
 

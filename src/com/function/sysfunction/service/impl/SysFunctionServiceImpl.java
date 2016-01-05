@@ -1,7 +1,4 @@
 package com.function.sysfunction.service.impl;
-
-
-
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +17,7 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 	
 	@Override
 	public String getList(Map<String,String> map) {
-		 List list =sysFunctionDao.getList(map);
+		 List<Map<String,String>> list =sysFunctionDao.getList(map);
 		 // JsonUtil.writeJSON(request, response, map);
 		  String str=ExtHelper.transListToString(list);
 		return str;

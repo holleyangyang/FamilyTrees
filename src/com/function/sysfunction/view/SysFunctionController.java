@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
  
+
 import com.common.util.JsonUtil;
 import com.function.sysfunction.service.impl.SysFunctionServiceImpl;
 
@@ -30,7 +31,7 @@ public class SysFunctionController {
 	public void test1(HttpServletRequest request,
 			HttpServletResponse response){
 	 
-			Map<String,String> map= new HashMap();
+			Map<String,String> map= new HashMap<String, String>();
 			//map.put("functionId", "101");
 			
 			String str=sysFunction.getList(map);

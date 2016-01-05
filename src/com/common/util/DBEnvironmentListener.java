@@ -29,8 +29,7 @@ public class DBEnvironmentListener {
 	//搭建数据库环境
 	public void initDataBase(Connection con) {
 		InputStream dbShell = DBEnvironmentListener.class.getClassLoader().getResourceAsStream("spring_config/initDataBase.sql");
-		Object obj=DBEnvironmentListener.class.getClassLoader().getResourceAsStream("/");
-		BufferedReader buffer = new BufferedReader(new InputStreamReader(dbShell));
+ 		BufferedReader buffer = new BufferedReader(new InputStreamReader(dbShell));
 		try {
 			con.setAutoCommit(false);
 			String sql = null;

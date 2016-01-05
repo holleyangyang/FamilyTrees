@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -20,21 +21,22 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  * @time: 2008.07.09
  */
 public class ExtHelper {
+	private static JSONArray jsonArray2;
 	/**
 	 * 通过List生成XML数据
 	 * @param recordTotal 记录总数，不一定与beanList中的记录数相等
 	 * @param beanList 包含bean对象的集合
 	 * @return 生成的XML数据
 	 */
-	public static String getXmlFromList(int recordTotal , List beanList) {
+	public static String getXmlFromList(int recordTotal , List<?> beanList) {
 		Total total = new Total();
 		total.setResults(recordTotal);
-		List results = new ArrayList();
+		List<Object> results = new ArrayList<Object>();
 		results.add(total);
 		results.addAll(beanList);
 		XStream sm = new XStream(new DomDriver());
 		for (int i = 0; i < results.size(); i++) {
-			Class c = results.get(i).getClass();
+			Class<? extends Object> c = results.get(i).getClass();
 			String b = c.getName();
 			String[] temp = b.split("\\.");
 			sm.alias(temp[temp.length - 1], c);
@@ -47,7 +49,7 @@ public class ExtHelper {
 	 * @param beanList 包含bean对象的集合    
 	 * @return 生成的XML数据  
 	 */
-	public static String getXmlFromList(List beanList,int Bsize){
+	public static String getXmlFromList(List<?> beanList,int Bsize){
 		return getXmlFromList(Bsize,beanList);  
 	}        
 	/**
@@ -56,12 +58,9 @@ public class ExtHelper {
 	 * @param beanList 包含bean对象的集合
 	 * @return 生成的JSON数据
 	 */
-	public static String getJsonFromList(long recordTotal , List beanList){
-		int start = 0;
-		int limit = 10;
-		TotalJson total = new TotalJson();
-		List Ll = new ArrayList();
-		total.setResults(recordTotal);
+	public static String getJsonFromList(long recordTotal , List<?> beanList){
+  		TotalJson total = new TotalJson();
+ 		total.setResults(recordTotal);
 		total.setItems(beanList);   
 		JSONObject JsonObject = JSONObject.fromObject(total);
 		return JsonObject.toString();
@@ -71,7 +70,7 @@ public class ExtHelper {
 	 * @param beanList 包含bean对象的集合
 	 * @return 生成的JSON数据
 	 */
-	public static String getJsonFromList(List beanList){
+	public static String getJsonFromList(List<?> beanList){
 		return getJsonFromList(beanList.size(),beanList);
 	}
 	/**
@@ -87,10 +86,10 @@ public class ExtHelper {
 	 * 通过JSON生成List数据
 	 */
 	public static List<?> getListFromJson(String jsonString,Class<?> tclass){
-	     //把json数组字符串转换成json数组
-		  JSONArray jsonArray2= JSONArray.fromObject(jsonString);
+	     jsonArray2 = JSONArray.fromObject(jsonString);
 		  //将josn数组转换成对应类的泛型集合
-		   List<?> tList=JSONArray.toList(jsonArray2, tclass);
+		   @SuppressWarnings("deprecation")
+		List<?> tList=JSONArray.toList(jsonArray2, tclass);
 		
 		return tList;
 		
@@ -172,13 +171,13 @@ public class ExtHelper {
         }     
        return json.toString();     
     }  
-   public static String transMapToString(Map map){  
-	   java.util.Map.Entry entry;  
+   public static String transMapToString(Map<String, String> map){  
+	   Entry<?, ?> entry;  
 	   StringBuffer sb = new StringBuffer();  
 	   sb.append("{");
-	   for(Iterator iterator = map.entrySet().iterator(); iterator.hasNext();)  
+	   for(Iterator<?> iterator = map.entrySet().iterator(); iterator.hasNext();)  
 	   {  
-	     entry = (java.util.Map.Entry)iterator.next();  
+	     entry = (java.util.Map.Entry<?, ?>)iterator.next();  
 	       sb.append("\"");
 	       sb.append(entry.getKey().toString()).append( "\":" );
 	       String val=null==entry.getValue()?"": entry.getValue().toString();
@@ -190,12 +189,12 @@ public class ExtHelper {
 	   sb.append("}");
 	   return sb.toString();  
 	 }  
-   public static String transListToString(List<Map> list){  
+   public static String transListToString( List<Map<String,String>> list){  
 	   StringBuffer sb = new StringBuffer();  
 	   sb.append("[");
 	    int i=0;
 	    int length=list.size();
-	   for(Map map :list){
+	   for(Map<String,String> map :list){
 		   i++;
 		   sb.append(transMapToString(map));
 		    if(length!=i){

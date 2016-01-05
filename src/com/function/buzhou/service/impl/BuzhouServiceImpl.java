@@ -19,7 +19,7 @@ public class BuzhouServiceImpl implements BuZhouService {
 	
 	@Override
 	public String getList(Map<String,String> map) {
-		 List list =buZhouDao.getList(map);
+		 List<Map<String,String>> list =buZhouDao.getList(map);
 		 // JsonUtil.writeJSON(request, response, map);
 		  String str=ExtHelper.transListToString(list);
 		return str;

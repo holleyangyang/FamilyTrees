@@ -1,13 +1,10 @@
 package com.common.util;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
@@ -17,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 /**
@@ -114,7 +112,7 @@ public class JsonUtil {
      * @param returnMap
      * @throws IOException
      */
-    public static void  writeJSON(HttpServletResponse response, Map returnMap) {
+    public static void  writeJSON(HttpServletResponse response, Map<?, ?> returnMap) {
     	setResponseAttributes(response);
         JSONObject json = new JSONObject();
         try{
@@ -126,7 +124,7 @@ public class JsonUtil {
         	e.printStackTrace();
         }
     }
-    public static void  writeJSON(HttpServletRequest request,HttpServletResponse response, Map returnMap) {
+    public static void  writeJSON(HttpServletRequest request,HttpServletResponse response, Map<?, ?> returnMap) {
     	setResponseAttributes(request,response);
         JSONObject json = new JSONObject();
         try{
@@ -160,8 +158,8 @@ public class JsonUtil {
 			HttpServletRequest request,Object dto) throws Exception {
 		request.getParameterMap();
 
-		Enumeration pNames = request.getParameterNames();
-		Map map = new HashMap();
+		Enumeration<?> pNames = request.getParameterNames();
+		Map<String, String> map = new HashMap<String, String>();
 		while (pNames.hasMoreElements()) {
 			String name = (String) pNames.nextElement();
 			String value = request.getParameter(name);
@@ -177,7 +175,7 @@ public class JsonUtil {
      * @param returnMap
      * @return
      */
-    public static String getJsonString(HttpServletResponse response, Map returnMap){
+    public static String getJsonString(HttpServletResponse response, Map<?, ?> returnMap){
     	response.setContentType("text/html;charset=UTF-8");
     	JSONObject json = new JSONObject();
         json.putAll(returnMap);
@@ -240,7 +238,7 @@ public class JsonUtil {
  
 
     public static void writeResponseJsonRet(HttpServletRequest request,HttpServletResponse response,String ret_Code,String ret_message){
-    	Map model=new HashMap();
+    	Map<String, String> model=new HashMap<String, String>();
     	model.put(RET_CODE, ret_Code);
     	model.put(RET_MSG, ret_message);
     	JSONObject json=writeJSON_Object(request,response, model);

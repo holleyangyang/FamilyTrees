@@ -57,7 +57,7 @@ public final class MatrixToImageWriter {
 		int height = 300;
 		// 二维码的图片格式
 		String format = "gif";
-		Hashtable hints = new Hashtable();
+		Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
 		// 内容所使用编码
 		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
 		BitMatrix bitMatrix = new MultiFormatWriter().encode(text,
