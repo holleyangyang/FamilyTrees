@@ -1,32 +1,30 @@
 package com.function.sysfunction.view;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.common.util.JsonUtil;
-import com.function.buzhou.service.impl.BuzhouServiceImpl;
 import com.function.sysfunction.service.impl.SysFunctionServiceImpl;
-import com.yy.util.ExtHelper;
+
 
 @Controller
 public class SysFunctionController {
 	
 	@Autowired
 	SysFunctionServiceImpl sysFunction;
-	
+	/**
+	 * 获取功能列表
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value = "/sysfunction/list")
 	public void test1(HttpServletRequest request,
 			HttpServletResponse response){

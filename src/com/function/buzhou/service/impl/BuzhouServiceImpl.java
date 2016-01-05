@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.common.util.ExtHelper;
 import com.function.buzhou.dao.BuZhouDao;
 import com.function.buzhou.service.BuZhouService;
-import com.yy.util.ExtHelper;
 @Service
 public class BuzhouServiceImpl implements BuZhouService {
 	
