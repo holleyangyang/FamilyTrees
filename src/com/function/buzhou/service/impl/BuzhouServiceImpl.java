@@ -36,8 +36,11 @@ public class BuzhouServiceImpl implements BuZhouService {
 		// TODO Auto-generated method stub
 		int count =0;
 		String str=buZhouDao.getMaxIdByFunctionId(map);
+		
 		if(StringUtil.isNullOrBlank(str)){
 			count=0;
+		}else{
+			count = Integer.parseInt(str);
 		}
 		return count;
 	}
@@ -46,6 +49,12 @@ public class BuzhouServiceImpl implements BuZhouService {
 	public void delete(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		buZhouDao.delete(map);
+	}
+
+	@Override
+	public void update(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		 buZhouDao.update(map);
 	}
 	
 }

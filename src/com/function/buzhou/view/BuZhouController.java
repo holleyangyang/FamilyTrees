@@ -58,12 +58,31 @@ public class BuZhouController {
 		Map<String,String> map= new HashMap<String, String>();
 		map.put("functionId", functionId);
 		int functionIdCount=buzhou.getCountByFunctionId(map);
-		
-		map.put("id",new Integer(functionIdCount+1).toString());
+		map.put("id",(new Integer(functionIdCount+1)).toString());
 		map.put("name", name);
 		map.put("remark", remark);
 	
 		buzhou.add(map);
+	}
+	/**
+	 * 修改步骤信息
+	 * @param functionId
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "/buzhou/update/{functionId}",method=RequestMethod.POST)
+	public void update(@PathVariable("functionId") String functionId,HttpServletRequest request,
+			HttpServletResponse response){
+ 		String name=request.getParameter("name");
+		String remark=request.getParameter("remark");
+		String id=request.getParameter("id");
+		Map<String,String> map= new HashMap<String, String>();
+		map.put("functionId", functionId);
+		map.put("id",id);
+		map.put("name", name);
+		map.put("remark", remark);
+	
+		buzhou.update(map);
 	}
 	/**
 	 * 删除步骤信息

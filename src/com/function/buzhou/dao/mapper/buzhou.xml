@@ -8,7 +8,9 @@
 			<result property="id" column="id"/>
 			<result property="name" column="name"/>
 			<result property="remark" column="remark"/>
+			<result property="functionId" column="function_id"/>
 	</resultMap>
+	
 	<select id="getList" resultMap="buzhou" parameterType="map">
 		select u.id, u.name, u.remark
 		from SYS_BUZHOU  u
@@ -23,6 +25,9 @@
 	 insert into SYS_BUZHOU (id,name,remark,function_id) 
 	 values(${id},'${name}','${remark}','${functionId}')
 	</insert>
+	<update id="update" parameterType="map">
+		update SYS_BUZHOU set name='${name}',remark='${remark}' where  id=${id} and function_id =${functionId}
+	</update>
 	
 	 <delete id="delete" parameterType="map">
 	 	delete from SYS_BUZHOU where  id=${id} and function_id =${functionId}
