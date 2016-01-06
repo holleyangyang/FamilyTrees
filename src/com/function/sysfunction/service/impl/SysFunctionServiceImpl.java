@@ -23,4 +23,12 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 		return str;
 	}
 
+	@Override
+	public String getlistByParentId(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		
+		 List<Map<String,String>> list =sysFunctionDao.getlistByParentId(map);
+		return  ExtHelper.transListToString(list);
+	}
+
 }

@@ -13,24 +13,40 @@
 	</resultMap>
 	<select id="getList" resultMap="sysfunction" parameterType="map">
 		select function_id,
-       function_id||'-'||function_name function_name,
-       function_desc,
-       parent_id,
-       parent_name,
-       remark,
-       is_deleted,
-       create_time,
-       last_update_time,
-       IS_OPEN
-  from sys_function t
-		
+		       function_id||'-'||function_name function_name,
+		       function_desc,
+		       parent_id,
+		       parent_name,
+		       remark,
+		       is_deleted,
+		       create_time,
+		       last_update_time,
+		       IS_OPEN
+  		from sys_function t
 		<where>	 
-		 <if test="functionId!='' and functionId!=null">
-		 	function_id=${functionId}
-		 </if>
+			 <if test="functionId!='' and functionId!=null">
+			 	function_id=${functionId}
+			 </if>
 		 </where>
-		 
 		 order by function_id
 	</select>
-	 
+	<select id="getlistByParentId" resultMap="sysfunction" parameterType="map">
+		select function_id,
+		       function_id||'-'||function_name function_name,
+		       function_desc,
+		       parent_id,
+		       parent_name,
+		       remark,
+		       is_deleted,
+		       create_time,
+		       last_update_time,
+		       IS_OPEN
+  		from sys_function t
+		<where>	 
+			 <if test="parentFunctionId!='' and parentFunctionId!=null">
+			 	parent_id=${parentFunctionId}
+			 </if>
+		</where>
+		 order by function_id
+	</select>
 </mapper>

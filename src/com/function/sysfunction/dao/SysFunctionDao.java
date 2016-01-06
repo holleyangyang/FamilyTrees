@@ -10,4 +10,5 @@ import org.mybatis.spring.annotation.Mapper;
 @Mapper
 public interface SysFunctionDao {
   public List<Map<String,String>> getList(Map<String,String> map);
+  public List<Map<String,String>> getlistByParentId(Map<String,String> map);
 }

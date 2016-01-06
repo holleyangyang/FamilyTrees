@@ -24,28 +24,23 @@ import com.function.buzhou.service.impl.BuzhouServiceImpl;
  
 @Controller
 public class BuZhouController {
+	Logger logger =Logger.getLogger(this.getClass());
 	
 	@Autowired
 	BuzhouServiceImpl buzhou;
-
 	/**
 	 * 获取功能对应步骤列表
 	 * @param functionId
 	 * @param request
-	 * @param response
 	 */
-	Logger logger =Logger.getLogger(this.getClass());
- 
 	@RequestMapping(value = "/buzhou/list/{functionId}",method=RequestMethod.POST)
 	public void list(@PathVariable("functionId") String functionId,HttpServletRequest request,
 			HttpServletResponse response){
-			Map<String,String> map= new HashMap<String, String>();
-			map.put("functionId", functionId);
-
-			String str=buzhou.getList(map);
-			
-			logger.info("str:"+str);
-			JsonUtil.printJsonListString(request,response,str);
+		Map<String,String> map= new HashMap<String, String>();
+		map.put("functionId", functionId);
+		String str=buzhou.getList(map);
+		logger.info("str:"+str);
+		JsonUtil.printJsonListString(request,response,str);
    }
 	/**
 	 * 添加步骤信息
