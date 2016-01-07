@@ -60,7 +60,7 @@ define(
 							//1、
 							var self = this;
 							$.ajax({    
-							    type:'post',        
+							    type:'POST',        
 							    url:'/examForAPI/sysfunction/list.do',    
 							    data:{},    
 							    cache:false,

@@ -11,4 +11,7 @@ import org.mybatis.spring.annotation.Mapper;
 public interface SysFunctionDao {
   public List<Map<String,String>> getList(Map<String,String> map);
   public List<Map<String,String>> getlistByParentId(Map<String,String> map);
+  public void add(Map<String,String> map);
+  public String getMaxFunctionIdByPId(Map<String,String> map);
+  public void update(Map<String,String> map);
 }

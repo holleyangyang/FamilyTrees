@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.common.util.ExtHelper;
 import com.function.sysfunction.dao.SysFunctionDao;
 import com.function.sysfunction.service.SysFunctionService;
+import com.mysql.jdbc.StringUtils;
 
 @Service
 public class SysFunctionServiceImpl implements SysFunctionService {
@@ -29,6 +30,36 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 		
 		 List<Map<String,String>> list =sysFunctionDao.getlistByParentId(map);
 		return  ExtHelper.transListToString(list);
+	}
+
+	@Override
+	public void add(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		sysFunctionDao.add(map);
+	}
+
+	@Override
+	public String getMaxFunctionIdByPId(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		String maxfuntionId=sysFunctionDao.getMaxFunctionIdByPId(map);
+		if(StringUtils.isNullOrEmpty(maxfuntionId)){
+			maxfuntionId = map.get("pId")+"1001";
+		}else{
+			maxfuntionId=String.valueOf((Integer.parseInt(maxfuntionId.substring(map.get("pId").length()))+1));
+		}
+		return maxfuntionId;
+	}
+	
+	public static void main(String[] args) {
+		String id="1001100110011002";
+		String pId ="100110011001"; 
+		System.out.println();
+	}
+
+	@Override
+	public void update(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		sysFunctionDao.update(map);
 	}
 
 }

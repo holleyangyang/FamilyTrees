@@ -9,15 +9,18 @@
 			<result property="pId" column="parent_id"/>
 			<result property="name" column="function_name"/>
 			<result property="open" column="is_open"/>
+			<result property="remark" column="remark"/>
+			<result property="desc" column="function_desc"/>
+			<result property="nameshow" column="function_nameshow"/>
 			
 	</resultMap>
 	<select id="getList" resultMap="sysfunction" parameterType="map">
 		select function_id,
-		       function_id||'-'||function_name function_name,
+		       function_id||'-'||function_name function_nameshow,
+		       function_name,
 		       function_desc,
 		       parent_id,
-		       parent_name,
-		       remark,
+ 		       remark,
 		       is_deleted,
 		       create_time,
 		       last_update_time,
@@ -32,11 +35,11 @@
 	</select>
 	<select id="getlistByParentId" resultMap="sysfunction" parameterType="map">
 		select function_id,
-		       function_id||'-'||function_name function_name,
+		       function_id||'-'||function_name function_nameshow,
+		       function_name,
 		       function_desc,
 		       parent_id,
-		       parent_name,
-		       remark,
+ 		       remark,
 		       is_deleted,
 		       create_time,
 		       last_update_time,
@@ -49,4 +52,39 @@
 		</where>
 		 order by function_id
 	</select>
+	<select id="getMaxFunctionIdByPId" resultType="string" parameterType="map">
+	
+		select  max(function_id) from sys_function t where  t.parent_id='${pId}'
+	</select>
+	<insert id="add" parameterType="map">
+	
+		insert into sys_function
+						  (function_id,
+						   function_name,
+						   function_desc,
+						   parent_id,
+ 						   remark,
+						   is_deleted,
+						   create_time,
+						   last_update_time,
+						   is_open)
+					values
+						  ('${id}',
+						   '${name}',
+						   '${desc}',
+						   '${pId}',
+ 						   '${remark}',
+						   '0',
+						   '${createTime}',
+						   '${createTime}',
+						   0)
+	</insert>
+	<update id="update" parameterType="map">
+			update sys_function
+			   set function_name = '${name}',
+			       function_desc = '${desc}',
+			       remark        = '${remark}',
+			       last_update_time = '${updateTime}'
+			 where function_id = '${id}'
+ 	</update>
 </mapper>
