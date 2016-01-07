@@ -87,7 +87,7 @@
 			</div>
 			<div style="margin-bottom: 20px">
 				<div>remark:</div>
-					<textarea class="textbox-text validatebox-text"  name="remark" id="remark" autocomplete="off" placeholder="" style="margin-left: 0px; margin-right: 0px; height: 90px; width: 290px;"></textarea>
+			<textarea id="remark" rows="14" name="remark"  class="textarea easyui-validatebox" style="width:100%;"></textarea> 
 			</div>
 		</form>
 	</div>
