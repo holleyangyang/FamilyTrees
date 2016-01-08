@@ -180,7 +180,13 @@ public class ExtHelper {
 	     entry = (java.util.Map.Entry<?, ?>)iterator.next();  
 	       sb.append("\"");
 	       sb.append(entry.getKey().toString()).append( "\":" );
-	       String val=null==entry.getValue()?"": entry.getValue().toString();
+	       String val="";
+	       if("remark".equals(entry.getKey().toString())){
+	    	    val=null==entry.getValue()?"": entry.getValue().toString();
+	       }else{
+	       
+	         val=null==entry.getValue()?"": entry.getValue().toString().replaceAll("       ", "<br/>");
+	       }
 	       sb.append("\"");
 	       sb.append(val);
 	       sb.append("\"");

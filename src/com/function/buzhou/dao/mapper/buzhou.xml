@@ -19,6 +19,7 @@
 		 	function_id=${functionId}
 		 </if>
 		 </where>
+		  order by to_number(id) 
 	</select>
 	
 	<insert id="add" parameterType="map">
@@ -33,6 +34,6 @@
 	 	delete from SYS_BUZHOU where  id=${id} and function_id =${functionId}
 	 </delete>
 	  <select id="getMaxIdByFunctionId" resultType="String"  parameterType="map">
-	 	select max(id)  from SYS_BUZHOU where   function_id =${functionId}
+	 	select max(to_number(id))  from SYS_BUZHOU where   function_id =${functionId}
 	 </select>
 </mapper>
