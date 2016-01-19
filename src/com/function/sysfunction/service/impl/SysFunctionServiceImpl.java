@@ -56,8 +56,6 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 	
 	}
 	
-	
-
 	@Override
 	public void update(Map<String, String> map) {
 		// TODO Auto-generated method stub
