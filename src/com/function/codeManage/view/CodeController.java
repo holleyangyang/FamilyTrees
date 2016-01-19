@@ -1,13 +1,8 @@
-package com.function.sysfunction.view;
-
-
-
+package com.function.codeManage.view;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,14 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.common.util.DateUtil;
 import com.common.util.JsonUtil;
 import com.common.util.StringUtil;
-import com.function.sysfunction.service.impl.SysFunctionServiceImpl;
+import com.function.codeManage.service.impl.CodeServiceImpl;
 
-@Controller("sysfunction_Controller")
-public class SysFunctionController {
+@RequestMapping(value="/codeManage")
+@Controller("codeManage_Controller")
+public class CodeController {
 	
 	@Autowired
-	@Qualifier("sysfunction_Service")
-	private SysFunctionServiceImpl sysFunctionService;
+	@Qualifier("codeManage_Service")
+	private CodeServiceImpl codeService;
 	/**
 	 * 获取功能列表
 	 * @param request
@@ -39,14 +35,14 @@ public class SysFunctionController {
      * @param request
      * @param response
      */
-	@RequestMapping(value = "/sysfunction/list",method=RequestMethod.POST)
+	@RequestMapping(value = "/list",method=RequestMethod.POST)
 	public void list(HttpServletRequest request,
 			HttpServletResponse response){
 	 
 			Map<String,String> map= new HashMap<String, String>();
 			//map.put("functionId", "101");
 			
-			String str=sysFunctionService.getList(map);
+			String str=codeService.getList(map);
 			JsonUtil.printJsonListString(request,response,str);
    }
     /**
@@ -56,7 +52,7 @@ public class SysFunctionController {
      * @param response
      * consumes="application/json"
      */
-	@RequestMapping(value = "/sysfunction/listbypid/{parentFunctionId}", method=RequestMethod.POST)
+	@RequestMapping(value = "/listbypid/{parentFunctionId}", method=RequestMethod.POST)
 	public void getlistByParentId(@PathVariable("parentFunctionId") String parentFunctionId,HttpServletRequest request,
 			HttpServletResponse response){
 	        
@@ -68,10 +64,10 @@ public class SysFunctionController {
 			Map<String,String> map= new HashMap<String, String>();
 			map.put("parentFunctionId", parentFunctionId);
 			
-			String str=sysFunctionService.getlistByParentId(map);
+			String str=codeService.getlistByParentId(map);
 			JsonUtil.printJsonListString(request,response,str);
    }
-	@RequestMapping(value = "/sysfunction/add/{parentFunctionId}", method=RequestMethod.POST)
+	@RequestMapping(value = "/add/{parentFunctionId}", method=RequestMethod.POST)
 	public void add(@PathVariable("parentFunctionId") String parentFunctionId,HttpServletRequest request,
 			HttpServletResponse response){
 			   
@@ -87,12 +83,12 @@ public class SysFunctionController {
 				map.put("pId", pId);
 				map.put("remark", remark);
 				map.put("createTime", createTime);
-				String id=sysFunctionService.getMaxFunctionIdByPId(map);
+				String id=codeService.getMaxFunctionIdByPId(map);
 				map.put("id", id);
-				sysFunctionService.add(map);
+				codeService.add(map);
 
 	}
-	@RequestMapping(value = "/sysfunction/update/{id}", method=RequestMethod.PUT)
+	@RequestMapping(value = "/update/{id}", method=RequestMethod.PUT)
 	public void update(@PathVariable("id") String id,HttpServletRequest request,
 			HttpServletResponse response){
 			   
@@ -108,7 +104,7 @@ public class SysFunctionController {
 				map.put("remark", remark);
 				map.put("updateTime", createTime);
  				map.put("id", id);
-				sysFunctionService.update(map);
+ 				codeService.update(map);
 
 	}
 }

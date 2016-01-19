@@ -1,4 +1,4 @@
-package com.function.sysfunction.service.impl;
+package com.function.codeManage.service.impl;
 import java.util.List;
 import java.util.Map;
 
@@ -7,20 +7,20 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.common.util.ExtHelper;
-import com.function.sysfunction.dao.SysFunctionDao;
+import com.function.codeManage.dao.CodeDao;
 import com.function.sysfunction.service.SysFunctionService;
 import com.mysql.jdbc.StringUtils;
 
-@Service("sysfunction_Service")
-public class SysFunctionServiceImpl implements SysFunctionService {
+@Service("codeManage_Service")
+public class CodeServiceImpl implements SysFunctionService {
 	
 	@Autowired
-	@Qualifier("sysfunction_Dao")
-	public SysFunctionDao sysFunctionDao;
+	@Qualifier("codeManage_Dao")
+	public CodeDao codeDao;
 	
 	@Override
 	public String getList(Map<String,String> map) {
-		 List<Map<String,String>> list =sysFunctionDao.getList(map);
+		 List<Map<String,String>> list =codeDao.getList(map);
 		 // JsonUtil.writeJSON(request, response, map);
 		  String str=ExtHelper.transListToString(list);
 		return str;
@@ -30,21 +30,20 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 	public String getlistByParentId(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		
-		 List<Map<String,String>> list =sysFunctionDao.getlistByParentId(map);
+		 List<Map<String,String>> list =codeDao.getlistByParentId(map);
 		return  ExtHelper.transListToString(list);
 	}
 
 	@Override
 	public void add(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		sysFunctionDao.add(map);
+		codeDao.add(map);
 	}
 
 	@Override
 	public String getMaxFunctionIdByPId(Map<String, String> map) {
-
 		// TODO Auto-generated method stub
-		String maxfuntionId=sysFunctionDao.getMaxFunctionIdByPId(map);
+		String maxfuntionId=codeDao.getMaxFunctionIdByPId(map);
 		if(StringUtils.isNullOrEmpty(maxfuntionId)){
 			maxfuntionId = map.get("pId")+"1001";
 		}else{
@@ -53,7 +52,6 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 			maxfuntionId=map.get("pId")+nextfuntionId;
 		}
 		return maxfuntionId;
-	
 	}
 	
 	public static void main(String[] args) {
@@ -65,7 +63,7 @@ public class SysFunctionServiceImpl implements SysFunctionService {
 	@Override
 	public void update(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		sysFunctionDao.update(map);
+		codeDao.update(map);
 	}
 
 }

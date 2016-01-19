@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Tabs with Images - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../common/jquery-easyui-1.4.3/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../common/jquery-easyui-1.4.3/themes/icon.css">
+	<script type="text/javascript" src="../common/jquery-easyui-1.4.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../common/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+	<style type="text/css">
+		body{
+			margin:0 0 0 0;
+		}
+	</style>
+	
+</head>
+<body >
+	<div class="easyui-tabs" data-options="tabWidth:100,tabHeight:60" style="width:100%;height:390px">
+		<div title="<span class='tt-inner'><img src='images/modem.png'/><br>Action</span>" >
+			 <IFRAME ID="actionframe"
+					Name="actionframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%
+					height="310px" ></IFRAME>   
+		</div>
+		<div title="<span class='tt-inner'><img src='images/scanner.png'/><br>Service</span>" >
+				 <IFRAME ID="serviceframe"
+					Name="serviceframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%
+					height="310px" SRC="Service.jsp"></IFRAME>   
+		</div>
+		
+		<div title="<span class='tt-inner'><img src='images/tablet.png'/><br>Sao</span>" >
+			<IFRAME ID="saoframe"
+					Name="saoframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%
+					height="310px" SRC="Sao.jsp"></IFRAME>  		</div>
+		<div title="<span class='tt-inner'><img src='images/pda.png'/><br>Dao</span>">
+ 				<IFRAME ID="daoframe"
+					Name="daoframe" FRAMEBORDER=0 SCROLLING=AUTO width=100%
+					height="310px" SRC="Dao.jsp"></IFRAME>   		</div>
+	</div>
+	<style scoped="scoped">
+		.tt-inner{
+			display:inline-block;
+			line-height:12px;
+			padding-top:5px;
+		}
+		.tt-inner img{
+			border:0;
+		}
+	</style>
+</body>
+</html>
+<script type="text/javascript">
+	var searchStr =window.location.search;
+	document.getElementById("actionframe").src="Action.jsp"+searchStr;
+	</script>

@@ -13,7 +13,13 @@
 		<setting name="defaultStatementTimeout" value="25000"/>  
 	</settings>
 	<mappers>
-		<mapper resource="./com/function/buzhou/dao/mapper/buzhou.xml"/>
-		<mapper resource="./com/function/sysfunction/dao/maaper/sysfunction.xml"/>
+		<mapper resource="./com/function/codeManage/dao/mapper/code.xml"/>
+		<mapper resource="./com/function/sysfunction/dao/mapper/sysfunction.xml"/>
+		
+		<mapper resource="./com/function/flowController/dao/mapper/mapper.xml"/>
+		<mapper resource="./com/function/flowControllerAction/dao/mapper/mapper.xml"/>
+		<mapper resource="./com/function/flowControllerActionService/dao/mapper/mapper.xml"/>
+		<mapper resource="./com/function/flowControllerActionServiceDao/dao/mapper/mapper.xml"/>
+		<mapper resource="./com/function/flowControllerActionServiceSao/dao/mapper/mapper.xml"/>
 	</mappers>
 </configuration>

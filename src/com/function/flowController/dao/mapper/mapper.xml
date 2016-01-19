@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.function.flowController.dao.CodeDao">
+	 
+	 <resultMap type="map" id="buzhou">
+ 			<result property="controllerName" column="controller_name"/>
+			<result property="controllerDesc" column="controller_desc"/>
+			<result property="controllerMethodId" column="controller_method_id"/>
+			<result property="controllerMethodName" column="controller_method_name"/>
+			<result property="controllerMethodDesc" column="controller_method_desc"/>
+			<result property="do" column="do"/>
+	</resultMap>
+	
+	<select id="getList" resultMap="buzhou" parameterType="map">
+				select t.controller_id,
+					   t.controller_name,
+				       t.controller_desc,
+				       t1.controller_method_id,
+				       t1.controller_method_name,
+				       t1.controller_method_desc,
+				       do
+				       
+				  from sys_controller t, sys_controller_method t1
+				 where t.controller_id = t1.controller_id
+		
+		  order by t.controller_id 
+	</select>
+</mapper>
