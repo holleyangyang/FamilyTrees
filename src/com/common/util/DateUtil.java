@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class DateUtil {
 	
@@ -23,11 +22,11 @@ public class DateUtil {
  
 
 	
-	public static List getMonthList(Date curTime){
-		List returnList = new ArrayList();
+	public static List<String> getMonthList(Date curTime){
+		List<String> returnList = new ArrayList<String>();
 		Calendar ca = Calendar.getInstance();
-	    ca.setTime(curTime);// ��ʼ��ʱ��
-		List yearAndMonthList = new ArrayList();// װʱ���list
+	    ca.setTime(curTime);//
+		ArrayList<String> yearAndMonthList = new ArrayList<String>();//
 		String yearAndMonth = "";
 		for (int i = 0; i < 12; i++) {
 			if((ca.get(Calendar.MONTH) + 1) < 10){
@@ -38,10 +37,7 @@ public class DateUtil {
 			yearAndMonthList.add(yearAndMonth);
 			ca.set(Calendar.MONTH, ca.get(Calendar.MONTH) - 1);
 		}
-		//����
-//		for(int i = (yearAndMonthList.size() - 1); i >= 0; i--){
-//			returnList.add(yearAndMonthList.get(i));
-//		}
+
 		
 		for(int i = 0; i <= (yearAndMonthList.size() - 1); i++){
 			returnList.add(yearAndMonthList.get(i));
