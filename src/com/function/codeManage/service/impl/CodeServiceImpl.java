@@ -54,11 +54,7 @@ public class CodeServiceImpl implements SysFunctionService {
 		return maxfuntionId;
 	}
 	
-	public static void main(String[] args) {
-		String id="1001100110011002";
-		String pId ="100110011001"; 
-		System.out.println();
-	}
+ 
 
 	@Override
 	public void update(Map<String, String> map) {
