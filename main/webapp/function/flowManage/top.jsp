@@ -16,79 +16,14 @@
         <tr>  
         	<th data-options="field:'controllerMethodId',width:0,hidden:true" >功能编号</th>
           	<th data-options="field:'controllerName',width:250" >Controller</th>
-			<th data-options="field:'controllerDesc',width:300" >Method</th>
+			<th data-options="field:'controllerMethodName',width:300" >Method</th>
 			<th data-options="field:'do',width:220" >.do</th>
-			<th data-options="field:'controllerMethodName',width:400" >功能描述</th>
-			<th data-options="field:'controllerMethodDesc',width:500,align:'center'" nowrap="false">备注</th>
+			<th data-options="field:'controllerMethodName',width:400" >controllerMethodName</th>
+			<th data-options="field:'controllerMethodDesc',width:500,align:'center'" nowrap="false">controllerMethodDesc</th>
         </tr> 
     </thead> 
 </table>  
-<!-- 修改页面 -->
-	<div id="dlg" class="easyui-dialog panel-body panel-body-noborder window-body" title="步骤信息编辑" style="width:500px;height:500px;padding:10px; "
-			data-options="
-				iconCls: 'icon-save',
-				buttons: [{
-					text:'Ok',
-					iconCls:'icon-ok',
-					handler:function(){
-						
-						if($('#id').val()=='000'){
-							$.ajax({
-					                cache: true,
-					                type: 'POST',
-					                url:'/examForAPI/codeManage/add/<%=request.getParameter("id")%>',
-					                data:$('#frm1').serialize(),
-					                async: false,
-					                error: function(request) {
-					                    alert('add Connection error');
-					                },
-					                success: function(data) {
-					                   $('#dlg').dialog('close');
-					                    $('#list_data').datagrid('reload');
-					                }
-					            });
-				            
-				            }else{
-					            $.ajax({
-					                cache: true,
-					                type: 'PUT',
-					                url:'/examForAPI/sysfunction/update/'+$('#id').val(),
-					                data:$('#frm1').serialize(), 
-					                async: false,
-					                error: function(request) {
-					                    alert('update Connection error');
-					                },
-					                success: function(data) {
-					                   $('#dlg').dialog('close');
-					                    $('#list_data').datagrid('reload');
-					                }
-					            });
-				            }
-						
-					}
-				},{
-					text:'Cancel',
-					handler:function(){
-						alert('cancel');;
-					}
-				}],resizable:true,modal:true
-			">
-		<form  method="post" id="frm1">
-		<div style="margin-bottom:20px">
- 		<input name="id" type="hidden" id="id">
-			<div>Name:</div>
-			<input class="easyui-textbox" name="name" id="name" data-options="prompt:'Enter a name...'" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>desc:</div>
-			<input class="easyui-textbox" name="desc"  id="desc" data-options="prompt:'Enter a name...'" style="width:100%;height:22px">
-		</div>
-		<div style="margin-bottom:20px">
-			<div>remark:</div>
-			<textarea id="remark" rows="14" name="remark"  class="textarea easyui-validatebox" style="width:100%;"></textarea> 
-		</div>
-		 </form>
-		 </div>
+ 
 </body>
 </html>
 <script type="text/javascript">
