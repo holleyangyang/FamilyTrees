@@ -29,7 +29,7 @@ public class TestMebercache {
 				Integer result = (Integer) myObject;
 
 				System.out.println(result);
-
+//找知识方向、归纳、写出自己的观点 、实践时的感想
 
 
 				//存取一个序列化的对象
