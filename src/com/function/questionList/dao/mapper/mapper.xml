@@ -14,7 +14,7 @@
 	
 	<select id="getList"  resultMap="objmap" parameterType="map">
 				 select question_id, question_desc, question_type, is_resolve, remark from sys_question_list T 
-		  <if test="questionId!=''">
+		  <if test="questionId!='' and questionId!=null">
 		  where 	question_id = '${questionId}'
 		  </if>
 		   
@@ -22,7 +22,7 @@
 	</select>
 	
 	<select id="getMaxQuestionId"  resultType="int" parameterType="map">
-				 select max(question_id) maxId from sys_question_list T 
+				 select nvl(max(question_id),0) maxId from sys_question_list T 
 	</select>
 	
 	<insert id="add"   parameterType="map">

@@ -5,6 +5,8 @@ import java.util.Map;
 
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -29,5 +31,15 @@ public class CodeServiceImpl implements CodeService {
 	}
 	public static void main(String[] args) {
 		
+	}
+	@Override
+	public void insert(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		codeDao.insert(map);
+	}
+	@Override
+	public int getMaxQuestionId(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return codeDao.getMaxQuestionId(map);
 	}
 }

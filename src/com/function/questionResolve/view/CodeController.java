@@ -42,5 +42,29 @@ public class CodeController {
 		logger.info("str:"+str);
 		JsonUtil.printJsonListString(request,response,str);
    }
+	@RequestMapping(value = "/add",method=RequestMethod.POST)
+	public void add(HttpServletRequest request,
+			HttpServletResponse response){
+		System.out.println("123333333333");
+		Map<String,String> map= new HashMap<String, String>();
+		int questionResolverId = questionResolveService.getMaxQuestionId(map);
+		String nextQuestionResolverId=StringUtil.fullNumberByLength(""+(questionResolverId+1));
+		String questionResolveDesc=request.getParameter("questionResolveDesc");
+ 		String questionId =request.getParameter("questionId");
+		String remark=request.getParameter("remark");
+		map.put("questionResolveId", nextQuestionResolverId);
+		map.put("questionResolveDesc", questionResolveDesc);
+		map.put("questionId", questionId);
+ 		map.put("remark", remark);
+		
+ 		questionResolveService.insert(map);
+		
+		Map<String, String> returnMap=new HashMap<String, String>();
+		returnMap.put("retCode", "000");
+		returnMap.put("retMsg", "success");
+		
+		
+		JsonUtil.writeJSON(response, returnMap); 
+   }
 	
 }

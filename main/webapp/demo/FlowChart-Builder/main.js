@@ -163,11 +163,8 @@ jsPlumb.ready(function() {
       //step 3
       //3-1 service
       var serviceNode1 = addNode('flow-panel','service1', 'service1', {x:'400px',y:'20px'});
-      
-      
       //3-2 service输出点、action输入点
       addPorts(instance, serviceNode1, ['in'],'input');
-      
       //3-3 action关联service
       connectPorts(instance, actionNode1, 'out1', serviceNode1, 'in');
       

@@ -7,21 +7,38 @@
 	 <resultMap type="map" id="objmap">
 	 		<result property="questionResolveListId" column="question_resolve_list_id"/>
 	 		<result property="questionResolveId" column="question_resolve_id"/>
- 			<result property="questionResolveDesc" column="question_resolve_desc"/>
-			<result property="questionResolveSeqe" column="question_resolve_seqe"/>
+ 			<result property="questionResolveListDesc" column="question_resolve_List_desc"/>
+			<result property="questionResolveListSeqe" column="question_resolve_List_seqe"/>
 			<result property="remark" column="remark"/>
 	</resultMap>
-	
+		<select id="getMaxQuestionId"  resultType="int" parameterType="map">
+        select nvl(replace(max(question_resolve_list_id),'null',''),0) maxId from sys_question_resolve_list T
+
+	</select>
 	<select id="getList" resultMap="objmap" parameterType="map">
  select question_resolve_list_id,
        question_resolve_id,
-       question_resolve_desc,
-       question_resolve_seqe,
+       question_resolve_list_desc,
+       question_resolve_list_seqe,
        remark
   from sys_question_resolve_list t
    
   where question_resolve_id ='${questionResolveId}'
   
-  order by question_resolve_seqe asc  
+  order by question_resolve_list_seqe asc  
 	</select>
+	<insert id="insert" parameterType="map">
+		insert into sys_question_resolve_list
+  (question_resolve_list_id,
+   question_resolve_id,
+   question_resolve_list_desc,
+   question_resolve_list_seqe,
+   remark)
+values
+  ('${questionResolveListId}',
+   '${questionResolveId}',
+    '${questionResolveListDesc}',
+     '${questionResolveListSeqe}',
+    '${remark}')
+	</insert>
 </mapper>

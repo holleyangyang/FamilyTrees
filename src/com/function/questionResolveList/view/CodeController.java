@@ -1,6 +1,7 @@
 package com.function.questionResolveList.view;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +39,38 @@ public class CodeController {
 			}
 		Map<String,String> map= new HashMap<String, String>();
 		map.put("questionResolveId", questionResolveId);
-		String str=questionResolveListService.getList(map);
-		logger.info("str:"+str);
-		JsonUtil.printJsonListString(request,response,str);
+		List<Map<String,String>> strMap=questionResolveListService.getList(map);
+	     
+		Map map1=new HashMap(); 
+	     map1.put("test", strMap);
+		JsonUtil.writeJSON(request,response,map1);
    }
+	@RequestMapping(value = "/add",method=RequestMethod.POST)
+	public void add(HttpServletRequest request,
+			HttpServletResponse response){
+		System.out.println("123333333333");
+		Map<String,String> map= new HashMap<String, String>();
+		int questionResolverListId = questionResolveListService.getMaxQuestionId(map);
+		String nextQuestionResolveListId=StringUtil.fullNumberByLength(""+(questionResolverListId+1));
+		String questionResolveListDesc=request.getParameter("questionResolveListDesc");
+		String remark=request.getParameter("remark");
+		String questionResolveListSeqe=request.getParameter("questionResolveListSeqe");
+		String questionResolveId = request.getParameter("questionResolveId");
+		map.put("questionResolveListId", nextQuestionResolveListId);
+		map.put("questionResolveId", questionResolveId);
+		map.put("questionResolveListDesc", questionResolveListDesc);
+		map.put("questionResolveListSeqe", questionResolveListSeqe);
+ 		map.put("remark", remark);
+		
+ 		questionResolveListService.insert(map);
+		
+		Map<String, String> returnMap=new HashMap<String, String>();
+		returnMap.put("retCode", "000");
+		returnMap.put("retMsg", "success");
+		
+		
+		JsonUtil.writeJSON(response, returnMap); 
+   }
+	
 	
 }

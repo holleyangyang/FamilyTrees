@@ -30,11 +30,10 @@
 					
 						if($('#questionId').val()=='000'){
 							$.ajax({
-					                cache: true,
-					                type: 'put',
+					                type: 'post',
 					                url:'/examForAPI/questionList/add',
 					                data:$('#frm1').serialize(),
-					                async: false,
+					                
 					                error: function(request) {
 					                    alert('add Connection error');
 					                },
@@ -45,12 +44,13 @@
 					            });
 				            
 				            }else{
+				            
 					            $.ajax({
 					                cache: true,
 					                type: 'POST',
 					                url:'/examForAPI/buzhou/update/<%=request.getParameter("id")%>',
 					                data:$('#frm1').serialize(), 
-					                async: false,
+					                async: true,
 					                error: function(request) {
 					                    alert('update Connection error');
 					                },
@@ -68,7 +68,7 @@
 					}
 				}],resizable:true,modal:true
 			">
-		<form method="put" id="frm1">
+		<form method="PUT" id="frm1" name="frm1" >
 			<div style="margin-bottom: 20px">
 				<div>questionDesc:</div>
 				<input class="easyui-textbox" name="questionDesc" id="questionDesc"
@@ -96,7 +96,7 @@ function  go(val,row){
 
 } 
 function constructionManager(questionId){
-	 window.open("../questionRolsove/index.html?questionId="+questionId);
+	 window.open("../questionRolsove/questionRolsove.jsp?questionId="+questionId,"questionRolsove");
 }	 
 $(function(){
 	

@@ -36,24 +36,24 @@ public class CodeController {
 		
 		Map<String,String> map= new HashMap<String, String>();
 		String questionId=request.getParameter("questionId");
-		map.put("questionId", questionId);
+		if(StringUtil.isNotNullOrBlank(questionId)){
+			map.put("questionId", questionId);
+		}
 		String str=questionListService.getList(map);
 		logger.info("str:"+str);
 		JsonUtil.printJsonListString(request,response,str);
    }
-	@RequestMapping(value = "/add",method=RequestMethod.PUT)
+	@RequestMapping(value = "/add",method=RequestMethod.POST)
 	public void add(HttpServletRequest request,
 			HttpServletResponse response){
 		
 		Map<String,String> map= new HashMap<String, String>();
 		int questionId = questionListService.getMaxQuestionId(map);
 		String nextQuestionId=StringUtil.fullNumberByLength(""+(questionId+1));
+		String questionDesc=request.getParameter("questionDesc");
+		String questionType=request.getParameter("questionType");
+		String remark=request.getParameter("remark");
 		map.put("questionId", nextQuestionId);
-		
-		   String questionDesc=request.getParameter("questionDesc");
-		   String questionType=request.getParameter("questionType");
-		   String remark=request.getParameter("remark");
-		
 		map.put("questionDesc", questionDesc);
 		map.put("questionType", questionType);
 		map.put("remark", remark);

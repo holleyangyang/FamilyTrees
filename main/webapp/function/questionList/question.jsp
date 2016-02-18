@@ -46,7 +46,7 @@ $(function(){
         pageSize: 15,//每页显示的记录条数，默认为10 
         pageList: [15,30,45],//可以设置每页记录条数的列表
         idField:'questionId', 
-        singleSelect:false,//是否单选 
+        singleSelect:true,//是否单选 
         pagination:true,//分页控件 
         rownumbers:true,//行号 
         onClickRow: function(index, data) {
