@@ -13,6 +13,14 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- ============================== 数据库配置 ==================================== -->
+     <bean id="propertyConfigurer"
+         class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+      <property name="location">
+         <description>可以引用CLASSPATH中context.properties中定义的变量</description>
+         <value>classpath:/context-config.properties</value>
+      </property>
+   </bean>
+	
 	<context:property-placeholder location="classpath:/jdbc.properties" />
 	<!-- 数据源配置 -->
 	<bean name="dataSource"
@@ -50,7 +58,12 @@
 					com.function.flowController.dao,
 					com.function.flowControllerActionService.dao,
 					com.function.flowControllerActionServiceDao.dao,
-					com.function.flowControllerActionServiceSao.dao" />
+					com.function.flowControllerActionServiceSao.dao,
+					com.function.flowControllerActionServiceSaoInterface.dao,
+					com.function.questionList.dao,
+					com.function.questionResolve.dao,
+					com.function.questionResolveList.dao" />
+		
 	</bean>
 
 	<!-- ================================= 事务控制相关 start ============================================= -->
@@ -76,7 +89,7 @@
 	<!-- ================================= 事务控制相关 end============================================= -->
 
 
-
+	
 
 
 </beans>

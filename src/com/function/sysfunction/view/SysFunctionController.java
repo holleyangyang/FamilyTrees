@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,9 @@ public class SysFunctionController {
 	@Autowired
 	@Qualifier("sysfunction_Service")
 	private SysFunctionServiceImpl sysFunctionService;
+	
+	 @Value("#{propertyConfigurer['userPageSize']}")
+	 private String userPageSize; 
 	/**
 	 * 获取功能列表
 	 * @param request
@@ -42,7 +46,7 @@ public class SysFunctionController {
 	@RequestMapping(value = "/sysfunction/list",method=RequestMethod.POST)
 	public void list(HttpServletRequest request,
 			HttpServletResponse response){
-	 
+	 System.out.println("userPageSize="+userPageSize);
 			Map<String,String> map= new HashMap<String, String>();
 			//map.put("functionId", "101");
 			

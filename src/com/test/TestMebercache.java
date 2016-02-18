@@ -7,7 +7,13 @@ import net.spy.memcached.MemcachedClient;
 
 public class TestMebercache {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
+		
+		Thread td =new Thread("test"); 
+		System.out.println(td.isAlive());
+	}
+	 
+	public static void main1(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		MemcachedClient c = new MemcachedClient(new InetSocketAddress(
 

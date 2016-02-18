@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.function.questionResolveList.dao.CodeDao">
+	 
+	 <resultMap type="map" id="objmap">
+	 		<result property="questionResolveListId" column="question_resolve_list_id"/>
+	 		<result property="questionResolveId" column="question_resolve_id"/>
+ 			<result property="questionResolveDesc" column="question_resolve_desc"/>
+			<result property="questionResolveSeqe" column="question_resolve_seqe"/>
+			<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<select id="getList" resultMap="objmap" parameterType="map">
+ select question_resolve_list_id,
+       question_resolve_id,
+       question_resolve_desc,
+       question_resolve_seqe,
+       remark
+  from sys_question_resolve_list t
+   
+  where question_resolve_id ='${questionResolveId}'
+  
+  order by question_resolve_seqe asc  
+	</select>
+</mapper>

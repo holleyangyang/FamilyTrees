@@ -1,4 +1,4 @@
-package com.function.flowControllerActionServiceSao.view;
+package com.function.flowControllerActionServiceSaoInterface.view;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,31 +16,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.common.util.JsonUtil;
 import com.common.util.StringUtil;
-import com.function.flowControllerActionServiceSao.service.impl.CodeServiceImpl;
-@RequestMapping(value="/flowControllerActionServiceSao")
-@Controller("flowControllerActionServiceSao_Controller")
+import com.function.flowControllerActionServiceSaoInterface.service.impl.CodeServiceImpl;
+@RequestMapping(value="/flowControllerActionServiceSaoInterface")
+@Controller("flowControllerActionServiceSaoInterface_Controller")
 public class CodeController {
 	Logger logger =Logger.getLogger(this.getClass());
 	
 	@Autowired
-	@Qualifier("flowControllerActionServiceSao_Service")
+	@Qualifier("flowControllerActionServiceSaoInterface_Service")
 	private CodeServiceImpl codeService;
 	/**
 	 * 获取功能对应步骤列表
 	 * @param functionId
 	 * @param request
 	 */
-	@RequestMapping(value = "/list/{flowActionServiceId}",method=RequestMethod.POST)
-	public void list(@PathVariable("flowActionServiceId") String flowActionServiceId,HttpServletRequest request,
+	@RequestMapping(value = "/list/{saoMethodInterfaceId}",method=RequestMethod.POST)
+	public void list(@PathVariable("saoMethodInterfaceId") String saoMethodInterfaceId,HttpServletRequest request,
 			HttpServletResponse response){
-		if(StringUtil.isNullOrBlank(flowActionServiceId)){
+		if(StringUtil.isNullOrBlank(saoMethodInterfaceId)){
 		return ;
 		}
-		Map<String,String> map= new HashMap<String, String>();
-		map.put("flowActionServiceId", flowActionServiceId);
-		String str=codeService.getList(map);
-		logger.info("str:"+str);
-		JsonUtil.printJsonListString(request,response,str);
+			Map<String,String> map= new HashMap<String, String>();
+			map.put("saoMethodInterfaceId", saoMethodInterfaceId);
+			String str=codeService.getList(map);
+			logger.info("str:"+str);
+			JsonUtil.printJsonListString(request,response,str);
+		 
    }
 	
 }

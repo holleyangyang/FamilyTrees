@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.function.questionList.dao.CodeDao">
+	 
+	 <resultMap type="map" id="objmap">
+ 			<result property="questionId" column="question_id"/>
+			<result property="questionDesc" column="question_desc"/>
+			<result property="questionType" column="question_type"/>
+			<result property="isResolve" column="is_resolve"/>
+			<result property="remark" column="remark"/>
+	</resultMap>
+	
+	<select id="getList"  resultMap="objmap" parameterType="map">
+				 select question_id, question_desc, question_type, is_resolve, remark from sys_question_list T 
+		  <if test="questionId!=''">
+		  where 	question_id = '${questionId}'
+		  </if>
+		   
+		  order by t.question_id 
+	</select>
+	
+	<select id="getMaxQuestionId"  resultType="int" parameterType="map">
+				 select max(question_id) maxId from sys_question_list T 
+	</select>
+	
+	<insert id="add"   parameterType="map">
+		insert into sys_question_list
+  (question_id, question_desc, question_type, remark)
+values
+  ('${questionId}', '${questionDesc}', '${questionType}', '${remark}')
+	</insert>
+	
+	
+</mapper>

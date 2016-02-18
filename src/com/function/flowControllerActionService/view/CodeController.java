@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.common.util.JsonUtil;
+import com.common.util.StringUtil;
 import com.function.flowControllerActionService.service.impl.CodeServiceImpl;
 @RequestMapping(value="/flowControllerActionService")
 @Controller("flowControllerActionService_Controller")
@@ -32,6 +33,9 @@ public class CodeController {
 	@RequestMapping(value = "/list/{flowControllerActionId}",method=RequestMethod.POST)
 	public void list(@PathVariable("flowControllerActionId") String flowControllerActionId,HttpServletRequest request,
 			HttpServletResponse response){
+		if(StringUtil.isNullOrBlank(flowControllerActionId)){
+		return ;
+		}
 		Map<String,String> map= new HashMap<String, String>();
 		map.put("flowControllerActionId", flowControllerActionId);
 		String str=codeService.getList(map);

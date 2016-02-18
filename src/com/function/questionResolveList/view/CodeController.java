@@ -1,4 +1,4 @@
-package com.function.flowControllerActionServiceSao.view;
+package com.function.questionResolveList.view;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.common.util.JsonUtil;
 import com.common.util.StringUtil;
-import com.function.flowControllerActionServiceSao.service.impl.CodeServiceImpl;
-@RequestMapping(value="/flowControllerActionServiceSao")
-@Controller("flowControllerActionServiceSao_Controller")
+import com.function.questionResolveList.service.impl.CodeServiceImpl;
+@RequestMapping(value="/questionResolveList")
+@Controller("questionResolveList_Controller")
 public class CodeController {
 	Logger logger =Logger.getLogger(this.getClass());
 	
 	@Autowired
-	@Qualifier("flowControllerActionServiceSao_Service")
-	private CodeServiceImpl codeService;
+	@Qualifier("questionResolveList_Service")
+	private CodeServiceImpl questionResolveListService;
 	/**
 	 * 获取功能对应步骤列表
 	 * @param functionId
 	 * @param request
 	 */
-	@RequestMapping(value = "/list/{flowActionServiceId}",method=RequestMethod.POST)
-	public void list(@PathVariable("flowActionServiceId") String flowActionServiceId,HttpServletRequest request,
+	@RequestMapping(value = "/list/{questionResolveId}",method=RequestMethod.POST)
+	public void list(@PathVariable("questionResolveId") String questionResolveId,HttpServletRequest request,
 			HttpServletResponse response){
-		if(StringUtil.isNullOrBlank(flowActionServiceId)){
-		return ;
-		}
+		if(StringUtil.isNullOrBlank(questionResolveId)){
+			return ;
+			}
 		Map<String,String> map= new HashMap<String, String>();
-		map.put("flowActionServiceId", flowActionServiceId);
-		String str=codeService.getList(map);
+		map.put("questionResolveId", questionResolveId);
+		String str=questionResolveListService.getList(map);
 		logger.info("str:"+str);
 		JsonUtil.printJsonListString(request,response,str);
    }
