@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+	<meta charset="UTF-8">
+    <title>Flow</title>  
+    <link rel="stylesheet" type="text/css" href="../../common/jquery-easyui-1.4.3/themes/default/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="../../common/jquery-easyui-1.4.3/themes/icon.css"/>
+	<script type="text/javascript" src="../../common/jquery-easyui-1.4.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../../common/jquery-easyui-1.4.3/jquery.easyui.min.js"></script>
+	<style type="">
+		body{
+			margin:0 0 0 0;
+		}
+	</style>
+</head>  
+<body>  
+    <div class="easyui-layout" id="mainLayout" border="false">  
+        <div id="topPanel" data-options="region:'north',split:true" title="操作步骤">  
+		
+        </div>  
+        <div id="centerPanel" data-options="region:'center',split:true" title="中间部分">  
+				 456 
+        </div>  
+         <div id="centerPanel" data-options="region:'south',split:true" title="底部部分">  
+				789
+        </div> 
+    </div>  
+    <script type="text/javascript">  
+        window.customResize = function () {  
+            var width = $(window).width() - 10;  
+            var height = $(window).height()-50;  
+            var panelHeight = parseInt(height / 3); //每个1/3高度  
+            $('#topPanel').panel('resize', { width: width, height: panelHeight });  
+            $('#centerPanel').panel('resize', { width: width, height: panelHeight });  
+         //   $('#bottomPanel').panel('resize', { width: width, height: panelHeight });  
+            $('#mainLayout').layout('resize', { width: width, height: height });  
+           
+        };  
+    </script>  
+    <script type="text/javascript">  
+        //窗口缩放时，重绘布局控件尺寸   
+        $(function () {  
+            redraw();  
+        });  
+  
+        $(window).resize(function () {  
+            redraw();  
+        });  
+  
+        function redraw() {  
+            if (window.customResize) {  
+                customResize(); //自定义缩放函数，页面若使用多个布局控件，需自定义缩放函数处理  
+            } else {  
+                var width = $(window).width();  
+                var height = $(window).height();  
+  
+                //没有自定义缩放函数时，默认对panel，layout，treegrid，datagrid等控件进行调整  
+                $('.easyui-panel').panel('resize', { width: width, height: height });  
+                $('.easyui-layout').layout('resize', { width: width, height: height });  
+                $('.easyui-treegrid').treegrid('resize', { width: width, height: height });  
+                $('.easyui-datagrid').datagrid('resize', { width: width, height: height });  
+            }  
+        }   
+        var windowStr= window.location.search.split("=")[1];
+        
+        $.ajax({
+         //   cache: true,
+            type: 'POST',
+           dataType:'json',
+            url:'/examForAPI/questionResolveList/list/'+windowStr,
+            data:$('#frm1').serialize(), 
+           // async: false,
+            error: function(request) {
+                alert('update Connection error');
+            },
+            success: function(data) {
+            
+           for(var i=0;i<data.test.length;i++){
+        	   var jsonData= data.test[i];
+              $("#topPanel").append("<b><font color=red>第"+(jsonData.questionResolveListSeqe)+"步</font></b>："+jsonData.questionResolveListDesc+"<br/>");
+              $("#topPanel").append(jsonData.remark+"<br/>");
+
+           }
+            }
+        });
+        
+        
+    </script>  
+</body>  
+</html>
