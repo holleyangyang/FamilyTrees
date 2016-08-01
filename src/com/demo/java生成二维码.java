@@ -1,4 +1,4 @@
-package com.common.util;
+package com.demo;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -12,12 +12,12 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.awt.image.BufferedImage;
 
-public final class MatrixToImageWriter {
+public final class java生成二维码 {
 
 	private static final int BLACK = 0xFF000000;
 	private static final int WHITE = 0xFFFFFFFF;
 
-	private MatrixToImageWriter() {
+	private java生成二维码() {
 	}
 
 	public static BufferedImage toBufferedImage(BitMatrix matrix) {
@@ -64,7 +64,7 @@ public final class MatrixToImageWriter {
 				BarcodeFormat.QR_CODE, width, height);
 		// 生成二维码
 		File outputFile = new File("e:" + File.separator + "new.gif");
-		MatrixToImageWriter.writeToFile(bitMatrix, format, outputFile);
+		java生成二维码.writeToFile(bitMatrix, format, outputFile);
 
 	}
 

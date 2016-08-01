@@ -1,11 +1,11 @@
-package com.test;
+package com.demo;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import net.spy.memcached.MemcachedClient;
 
-public class TestMebercache {
+public class memcached测试代码 {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		MemcachedClient c = new MemcachedClient(new InetSocketAddress(

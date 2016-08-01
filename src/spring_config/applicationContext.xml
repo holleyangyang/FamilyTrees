@@ -23,6 +23,7 @@
 	
 	<context:property-placeholder location="classpath:/jdbc.properties" />
 	<!-- 数据源配置 -->
+	<!--  
 	<bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
@@ -38,7 +39,18 @@
 			<value>${jdbc.password}</value>
 		</property>
 	</bean>
-
+	-->
+	
+		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
+		   <property name="jndiName">  
+		    <value>java:comp/env/jndi/mysqlyy</value>    
+		   </property>    
+		   <!-- 如果你不想使用 'java:comp/env/'前缀的话请设置下面的值为true,   
+		   默认值为false -->    
+		   <property name="resourceRef">    
+		       <value>false</value>    
+		   </property>   
+		</bean> 
 	<!-- ================================ MyBatis SqlSession配置 ========================================= -->
 	<!-- 使用SqlSessionFactoryBean工厂产生SqlSession对象，方便后期注入Dao -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

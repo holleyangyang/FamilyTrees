@@ -1,4 +1,4 @@
-package com.test;
+package com.demo;
 
 import java.util.concurrent.TimeoutException;
 
@@ -8,7 +8,7 @@ import com.rabbitmq.client.ConnectionFactory;
 
 
 
-public class TestRabbMq {
+public class RabbitMQ测试代码 {
 	private final static String QUEUE_NAME = "hello";
 
 	  public static void main(String[] arg)

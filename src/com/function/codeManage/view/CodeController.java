@@ -1,8 +1,15 @@
 package com.function.codeManage.view;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,6 +24,11 @@ import com.common.util.DateUtil;
 import com.common.util.JsonUtil;
 import com.common.util.StringUtil;
 import com.function.codeManage.service.impl.CodeServiceImpl;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 @RequestMapping(value="/codeManage")
 @Controller("codeManage_Controller")
@@ -45,6 +57,36 @@ public class CodeController {
 			String str=codeService.getList(map);
 			JsonUtil.printJsonListString(request,response,str);
    }
+	
+	@RequestMapping(value="/test")
+	public void test(HttpServletRequest request,HttpServletResponse response){
+		
+		String text = "http://www.baidu.com";
+		int width = 300;
+		int height = 300;
+		// 二维码的图片格式
+		String format = "gif";
+		Hashtable<EncodeHintType, String> hints = new Hashtable<EncodeHintType, String>();
+		// 内容所使用编码
+		hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+		 
+			try {
+				BitMatrix bitMatrix = new MultiFormatWriter().encode(text,
+						BarcodeFormat.QR_CODE, width, height);
+ 
+OutputStream  out = response.getOutputStream();
+com.demo.java生成二维码.writeToStream(bitMatrix,format,out);
+			} catch (WriterException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+		System.out.println("test");
+	}
     /**
      * 
      * @param parentFunctionId
