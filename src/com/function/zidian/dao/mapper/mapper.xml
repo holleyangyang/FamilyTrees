@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.guanxiwang.zidian.dao.CodeDao">
+<mapper namespace="com.function.zidian.dao.CodeDao">
 	 
 	 <resultMap type="map" id="data_dictionary">
 			<result property="id" column="id"/>

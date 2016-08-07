@@ -1,4 +1,4 @@
-package com.guanxiwang.zidian.dao;
+package com.function.zidian.dao;
 
 import java.util.List;
 import java.util.Map;

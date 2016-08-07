@@ -23,8 +23,8 @@
 	
 	<context:property-placeholder location="classpath:/jdbc.properties" />
 	<!-- 数据源配置 -->
-	<!--  
-	<bean name="dataSource"
+ 
+	<bean name="dataSource1"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName">
 			<value>${jdbc.driverClassName}</value>
@@ -39,8 +39,8 @@
 			<value>${jdbc.password}</value>
 		</property>
 	</bean>
-	-->
 	
+	 
 		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">  
 		   <property name="jndiName">  
 		    <value>java:comp/env/jndi/mysqlyy</value>    
@@ -51,6 +51,7 @@
 		       <value>false</value>    
 		   </property>   
 		</bean> 
+	
 	<!-- ================================ MyBatis SqlSession配置 ========================================= -->
 	<!-- 使用SqlSessionFactoryBean工厂产生SqlSession对象，方便后期注入Dao -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -74,7 +75,8 @@
 					com.function.flowControllerActionServiceSaoInterface.dao,
 					com.function.questionList.dao,
 					com.function.questionResolve.dao,
-					com.function.questionResolveList.dao" />
+					com.function.questionResolveList.dao,
+					com.function.zidian.dao" />
 		
 	</bean>
 

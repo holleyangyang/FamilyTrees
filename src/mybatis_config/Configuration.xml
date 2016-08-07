@@ -24,5 +24,7 @@
 		<mapper resource="./com/function/questionList/dao/mapper/mapper.xml"/>
 		<mapper resource="./com/function/questionResolve/dao/mapper/mapper.xml"/>
 		<mapper resource="./com/function/questionResolveList/dao/mapper/mapper.xml"/>
+		<mapper resource="./com/function/zidian/dao/mapper/mapper.xml"/>
+		
 	</mappers>
 </configuration>
