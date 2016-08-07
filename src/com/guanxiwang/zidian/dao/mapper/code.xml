@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guanxiwang.zidian.dao.CodeDao">
+	 
+	 <resultMap type="map" id="data_dictionary">
+			<result property="id" column="id"/>
+			<result property="data_name" column="data_name"/>
+			<result property="data_value" column="data_value"/>
+			<result property="data_type_value" column="data_type_value"/> 
+	</resultMap>
+	<select id="getList" resultMap="data_dictionary" parameterType="map">
+		select id,
+		      data_name,data_value,
+		      	data_type,
+		      	data_type_value
+  		from yy_gx_data_dictionary t
+		
+		
+	</select>
+	
+</mapper>
