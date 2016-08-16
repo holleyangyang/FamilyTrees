@@ -31,7 +31,7 @@ public class CodeController {
      * @param request
      * @param response
      */
-	@RequestMapping(value = "/list",method=RequestMethod.POST)
+	@RequestMapping(value = "/list")
 	public void list(HttpServletRequest request,
 			HttpServletResponse response){
 	 
